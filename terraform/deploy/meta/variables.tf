@@ -6,15 +6,17 @@ variable "ssh_key_name" {}
 
 variable "docker_compose_version" {}
 
+variable "domain_name" {}
+
 variable "gh_repo_name" {}
 
 variable "droplet_user" {}
 
-variable "droplet_prefix" {}
+variable "resource_prefix" {}
 
 variable "droplet_image" {}
 
-variable "droplet_region" {}
+variable "do_region" {}
 
 variable "droplet_size_stage" {}
 

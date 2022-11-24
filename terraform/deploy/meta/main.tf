@@ -5,17 +5,15 @@ data "tfe_organization" "org" {
 
 # workspaces
 resource "tfe_workspace" "stage" {
-  name           = "${var.project_slug}-stage"
-  organization   = data.tfe_organization.org.name
-  tag_names      = [var.project_slug]
-  execution_mode = "local"
+  name         = "${var.project_slug}-stage"
+  organization = data.tfe_organization.org.name
+  tag_names    = [var.project_slug]
 }
 
 resource "tfe_workspace" "prod" {
-  name           = "${var.project_slug}-prod"
-  organization   = data.tfe_organization.org.name
-  tag_names      = [var.project_slug]
-  execution_mode = "local"
+  name         = "${var.project_slug}-prod"
+  organization = data.tfe_organization.org.name
+  tag_names    = [var.project_slug]
 }
 
 resource "tfe_workspace" "base" {
@@ -55,6 +53,13 @@ resource "tfe_variable" "droplet_user" {
 resource "tfe_variable" "docker_compose_version" {
   key             = "docker_compose_version"
   value           = var.docker_compose_version
+  category        = "terraform"
+  variable_set_id = tfe_variable_set.base.id
+}
+
+resource "tfe_variable" "domain_name" {
+  key             = "domain_name"
+  value           = var.domain_name
   category        = "terraform"
   variable_set_id = tfe_variable_set.base.id
 }
@@ -114,9 +119,9 @@ resource "tfe_variable" "tfc_base_workspace_name" {
   variable_set_id = tfe_variable_set.app.id
 }
 
-resource "tfe_variable" "droplet_prefix" {
-  key             = "droplet_prefix"
-  value           = var.droplet_prefix
+resource "tfe_variable" "resource_prefix" {
+  key             = "resource_prefix"
+  value           = var.resource_prefix
   category        = "terraform"
   variable_set_id = tfe_variable_set.app.id
 }
@@ -128,9 +133,9 @@ resource "tfe_variable" "droplet_image" {
   variable_set_id = tfe_variable_set.app.id
 }
 
-resource "tfe_variable" "droplet_region" {
-  key             = "droplet_region"
-  value           = var.droplet_region
+resource "tfe_variable" "do_region" {
+  key             = "do_region"
+  value           = var.do_region
   category        = "terraform"
   variable_set_id = tfe_variable_set.app.id
 }
