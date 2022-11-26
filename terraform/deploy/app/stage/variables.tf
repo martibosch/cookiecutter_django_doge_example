@@ -12,6 +12,10 @@ variable "droplet_size" {}
 
 variable "do_token" {}
 
+variable "do_access_id" {}
+
+variable "do_secret_key" {}
+
 variable "gh_token" {}
 
 variable "env_file_map" {}

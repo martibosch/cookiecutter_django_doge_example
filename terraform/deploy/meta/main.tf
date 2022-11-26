@@ -140,6 +140,20 @@ resource "tfe_variable" "do_region" {
   variable_set_id = tfe_variable_set.app.id
 }
 
+resource "tfe_variable" "do_access_id" {
+  key             = "do_access_id"
+  value           = var.do_access_id
+  category        = "terraform"
+  variable_set_id = tfe_variable_set.app.id
+}
+
+resource "tfe_variable" "do_secret_key" {
+  key             = "do_secret_key"
+  value           = var.do_secret_key
+  category        = "terraform"
+  variable_set_id = tfe_variable_set.app.id
+}
+
 resource "tfe_workspace_variable_set" "app_stage" {
   variable_set_id = tfe_variable_set.app.id
   workspace_id    = tfe_workspace.stage.id

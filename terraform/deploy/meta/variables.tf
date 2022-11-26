@@ -18,6 +18,10 @@ variable "droplet_image" {}
 
 variable "do_region" {}
 
+variable "do_access_id" {}
+
+variable "do_secret_key" {}
+
 variable "droplet_size_stage" {}
 
 variable "env_file_map_stage" {}
