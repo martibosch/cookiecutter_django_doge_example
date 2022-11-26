@@ -17,12 +17,13 @@ module "app" {
   source = "github.com/martibosch/cookiecutter_django_doge_example//terraform/modules/app"
   env    = "stage"
 
-  droplet_prefix = var.droplet_prefix
-  droplet_image  = var.droplet_image
-  droplet_region = var.droplet_region
-  droplet_size   = var.droplet_size
-  a_record_name  = "staging"
-  create_cname   = false
+  resource_prefix = var.resource_prefix
+  droplet_image   = var.droplet_image
+  do_region       = var.do_region
+  droplet_size    = var.droplet_size
+  env_file_map    = var.env_file_map
+  a_record_name   = "staging"
+  create_cname    = false
 
   # do_ssh_key_id     = data.tfe_outputs.base.values.do_ssh_key_id
   # droplet_user_data = data.tfe_outputs.base.values.droplet_user_data
